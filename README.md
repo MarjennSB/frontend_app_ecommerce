@@ -1,59 +1,78 @@
-# AppFrontendEcommerce
+# [E-commerce Demo 1](https://e-commerce-demo-1-iota.vercel.app/)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.27.
+Esta es una plantilla de sitio web de comercio electrónico totalmente gratuita y desarrollado con Angular v19.0.0 y TailwindCSS v3.4.16 que puedes utilizar para comenzar a desarrollar tu producto rápidamente.
 
-## Development server
+## Características
 
-To start a local development server, run:
+- Carrusel de Ofertas de Productos.
+- Páginas de Login y Registro.
+- Carrito de compras funcional.
+- Página de visualización de un producto individual con banco de imágenes.
+- Página de productos con métodos de filtros, páginación y sorteo ya funcionales.
+
+## Dependencias
+
+- Angular v19.0.0
+- Flowbite v2.5.2
+- TailwindCSS v3.4.16
+- rxjs v7.8.0
+
+## Previews
+
+### Home Page
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+    <img src="/public/img/previews/home-page.png" style="flex: 1 1 45%; max-width: 45%; margin: 10px;">
+    <img src="/public/img/previews/home-products.png" style="flex: 1 1 45%; max-width: 45%; margin: 10px;">
+</div>
+
+### Products Page
+
+<div style="display: flex; justify-content: center;">
+    <img src="/public/img/previews/products-page.png" style="max-width: 100%; height: auto; margin: 10px;">
+</div>
+
+### Shopping Cart
+
+<div style="display: flex; justify-content: center;">
+    <img src="/public/img/previews/shopping-cart.png" style="max-width: 100%; height: auto; margin: 10px;">
+</div>
+
+### Product Details
+
+<div style="display: flex; justify-content: center;">
+    <img src="/public/img/previews/single-product.png" style="max-width: 100%; height: auto; margin: 10px;">
+</div>
+
+### Auth
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+    <img src="/public/img/previews/login.png" style="flex: 1 1 45%; max-width: 45%; margin: 10px;">
+    <img src="/public/img/previews/register.png" style="flex: 1 1 45%; max-width: 45%; margin: 10px;">
+</div>
+
+## Instalación
+
+### Clona el repositorio
+
+```bash
+git clone https://github.com/ThemeMarket/e-commerce-demo-1.git
+```
+
+### Dirígete al proyecto
+
+```bash
+cd my-project
+```
+
+### Instala las dependencias
+
+```bash
+npm install
+```
+
+### Levanta el servidor de desarrollo
 
 ```bash
 ng serve
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

@@ -1,0 +1,17 @@
+ng serve
+
+auth // FALTA
+products // TERMINADO
+categories // TERMINADO
+brands // FALTA
+cart // TERMINADO (MEMORIA DEL NAVEGADOR)
+wishlist // FALTA
+checkuot // FALTA
+shipping_addresses // FALTA
+orders // FALTA
+payments // FALTA
+profile // FALTA
+reviews // FALTA
+
+FALTA VALIDAR CART CON EL BACKEND
+VULNERABILIDAD EN ID CATEGORIA - MANIPULACION DE ENDPOINT

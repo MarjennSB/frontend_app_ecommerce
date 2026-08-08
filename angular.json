@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "app_frontend_ecommerce": {
+    "e-commerce-demo-1": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/app_frontend_ecommerce",
+            "outputPath": "dist/e-commerce-demo-1",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -29,15 +29,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "security": {
-              "allowedHosts": []
-            },
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -67,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "app_frontend_ecommerce:build:production"
+              "buildTarget": "e-commerce-demo-1:build:production"
             },
             "development": {
-              "buildTarget": "app_frontend_ecommerce:build:development"
+              "buildTarget": "e-commerce-demo-1:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -100,5 +92,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
