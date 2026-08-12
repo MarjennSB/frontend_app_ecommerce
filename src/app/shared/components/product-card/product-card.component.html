@@ -4,7 +4,7 @@
 >
   <div class="size-32 relative mx-auto">
     <img
-      [src]="product().imagenes[0].ruta_imagen"
+      [src]="product().imagenes?.[0]?.ruta_imagen"
       [alt]="product().nombre"
       class="w-full h-full object-cover"
     />

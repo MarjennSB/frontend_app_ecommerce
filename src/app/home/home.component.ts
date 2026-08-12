@@ -1,5 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { initFlowbite } from 'flowbite';
 import { RouterLink } from '@angular/router';
 
 import { ProductOfferComponent } from '../shared/components/product-offer/product-offer.component';
@@ -62,11 +61,6 @@ export class HomeComponent implements OnInit {
     );
 
     this.productsOffers = products;
-
-    setTimeout(() => {
-      initFlowbite();
-    }, 100);
-
   });
 
 

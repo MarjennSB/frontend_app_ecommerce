@@ -19,7 +19,7 @@ export interface Product {
   fecha_vencimiento: string | null;
   estado: number;
 
-  imagenes: ProductImage[];
+  imagenes?: ProductImage[];
 
   created_at: string;
 }

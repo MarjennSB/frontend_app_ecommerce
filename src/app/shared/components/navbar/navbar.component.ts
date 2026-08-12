@@ -11,13 +11,20 @@ import { CategoryService } from '../../../core/services/category.service';
 export class NavbarComponent implements OnInit {
   categoryService = inject(CategoryService);
 
-  // Aquí guardaremos las categorías del backend
   categories = signal<Category[]>([]);
+  isCategoriesOpen = signal(false);
 
   ngOnInit(): void {
-    // Llamamos al backend al cargar el componente
     this.categoryService.getAll().subscribe((response) => {
       this.categories.set(response.categorias.data);
     });
+  }
+
+  toggleCategories(): void {
+    this.isCategoriesOpen.update(value => !value);
+  }
+
+  closeCategories(): void {
+    this.isCategoriesOpen.set(false);
   }
 }

@@ -5,7 +5,7 @@
     <div class="shrink-0 md:order-1">
       <img
         class="h-20 w-20"
-        [src]="product().imagenes[0].ruta_imagen"
+        [src]="product().imagenes?.[0]?.ruta_imagen"
         [alt]="product().nombre"
       />
     </div>

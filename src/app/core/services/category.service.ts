@@ -21,7 +21,6 @@ export class CategoryService {
     return this.http.get<CategoryResponse>(
       `${this.baseUrl}?per_page=10`
     );
-
   }
 
   getById(id: number): Observable<Category> {

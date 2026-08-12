@@ -87,15 +87,29 @@
       </a>
     </div>
   </div>
-   @if (product().imagenes.length > 0) {
+
+  @if (product().imagenes?.length) {
   <div
     class="hidden sm:flex absolute -top-20 right-5 md:right-24 lg:-right-3 xl:right-10"
   >
     <img
-      [src]="product().imagenes[0].ruta_imagen"
+      [src]="product().imagenes?.[0]?.ruta_imagen"
       [alt]="product().nombre"
       class="w-64 h-64 object-contain"
     />
   </div>
 }
+   
+  <!-- @if (product().imagenes && product().imagenes.length > 0) {
+    <div
+        class="hidden sm:flex absolute -top-20 right-5 md:right-24 lg:-right-3 xl:right-10"
+      >
+      <img
+        [src]="product().imagenes![0].ruta_imagen"
+        [alt]="product().nombre"
+        class="w-64 h-64 object-contain"
+      />
+    </div>
+  } -->
+
 </div>
