@@ -41,10 +41,10 @@ export class ProductService {
   } */
 
   getById(id: string): Observable<Product> {
-    return this.http.get<{codigo: number, producto: Product}>(
+    return this.http.get<{data: Product}>(
       `${this.baseUrl}/${id}`
     ).pipe(
-      map(response => response.producto)
+      map(response => response.data)
     );
   }
 

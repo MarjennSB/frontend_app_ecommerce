@@ -4,6 +4,9 @@ import { ProductService } from '../../../core/services/product.service';
 import { Category } from '../../../core/models/category.model';
 import { map, Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { CategoryService } from '../../../core/services/category.service';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { computed } from '@angular/core';
 
 @Component({
   selector: 'app-filters-dropdown',
@@ -18,6 +21,28 @@ export class FiltersDropdownComponent implements OnInit {
   maxPrice = signal<number>(3500);
   rating = signal<number>(5);
   category = signal<string | null>(null);
+
+  categoryService = inject(CategoryService);
+
+  categories = toSignal(
+    this.categoryService.getAll().pipe(map(res => res.categorias.data)),
+    { initialValue: [] as Category[] }
+  );
+
+  groupedCategories = computed(() => {
+    const cats = this.categories();
+    const groups: { letter: string, items: Category[] }[] = [];
+    cats.forEach(c => {
+      const letter = c.nombre.charAt(0).toUpperCase();
+      let group = groups.find(g => g.letter === letter);
+      if (!group) {
+        group = { letter, items: [] };
+        groups.push(group);
+      }
+      group.items.push(c);
+    });
+    return groups.sort((a, b) => a.letter.localeCompare(b.letter));
+  });
 
   results!: Observable<number>;
 

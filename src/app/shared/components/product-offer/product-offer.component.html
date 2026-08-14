@@ -63,10 +63,8 @@
       </p> -->
     </div>
     <div class="flex gap-2 text-2xl font-bold items-baseline">
-      <p class="text-gray-950">{{ product().precio | currency }}</p>
-      <!-- <del class="text-gray-500 text-base">{{
-        product().previousPrice | currency
-      }}</del> -->
+      <p class="text-gray-950">{{ product().precio_oferta || product().precio_venta | currency }}</p>
+      <del class="text-gray-500 text-base">{{ product().precio_venta | currency }}</del>
     </div>
     <div class="p-2">
       <a

@@ -109,6 +109,8 @@
             ></path>
           </svg>
         </button>
+
+        @if (authService.isAuthenticated()) {
         <button
           type="button"
           class="flex mx-2 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300"
@@ -119,7 +121,7 @@
           <span class="sr-only">Open user menu</span>
           <img
             class="w-8 h-8 rounded-full"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png"
+            src="https://ui-avatars.com/api/?name={{ authService.currentUser()?.nombres || 'U' }}&background=0D8ABC&color=fff"
             alt="user photo"
           />
         </button>
@@ -130,20 +132,26 @@
         >
           <div class="py-3 px-4">
             <span class="block text-sm font-semibold text-gray-900"
-              >Neil Sims</span
+              >{{ authService.currentUser()?.nombres }} {{ authService.currentUser()?.apellido_paterno }}</span
             >
             <span class="block text-sm text-gray-900 truncate">{{
-              "name@flowbite.com"
+              authService.currentUser()?.correo
             }}</span>
           </div>
           <ul class="py-1 text-gray-700" aria-labelledby="dropdown">
             <li>
-              <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100"
+              <a role="button" (click)="me()" class="block py-2 px-4 text-sm hover:bg-gray-100 cursor-pointer"
+                >Perfil</a
+              >
+            </li>
+            <li>
+              <a role="button" (click)="logout()" class="block py-2 px-4 text-sm hover:bg-gray-100 cursor-pointer"
                 >Sign out</a
               >
             </li>
           </ul>
         </div>
+        }
       </div>
     </div>
   </nav>

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, AfterViewInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ProductOfferComponent } from '../shared/components/product-offer/product-offer.component';
@@ -14,6 +14,7 @@ import { CategoryService } from '../core/services/category.service';
 import { Category } from '../core/models/category.model';
 
 import { MAX_PRODUCTS_PER_PAGE } from '../utils/pagination';
+import { initFlowbite, initCarousels } from 'flowbite';
 
 
 @Component({
@@ -38,9 +39,9 @@ export class HomeComponent implements OnInit {
 
   categories: Category[] = [];
 
-  products!: Product[];
+  products: Product[] = [];
 
-  productsOffers!: Product[];
+  productsOffers: Product[] = [];
 
 
 
@@ -60,7 +61,14 @@ export class HomeComponent implements OnInit {
       (_, index) => index < MAX_PRODUCTS_PER_PAGE
     );
 
-    this.productsOffers = products;
+    this.productsOffers = products.filter(
+      (p: Product) => p.precio_oferta !== null && p.precio_oferta !== undefined && Number(p.precio_oferta) > 0
+    );
+
+    setTimeout(() => {
+      initFlowbite();
+      initCarousels();
+    }, 50);
   });
 
 

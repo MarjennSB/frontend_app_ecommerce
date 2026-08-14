@@ -1,139 +1,167 @@
-<section>
-  <div
-    class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
-  >
+<section class="bg-gray-50 min-h-screen pt-16">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-12">
     <a class="flex items-center mb-6 text-2xl font-semibold text-gray-950">
-      <img
-        class="w-8 h-8 mr-2"
-        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-        alt="logo"
-      />
+      <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
       Company
     </a>
-    <div
-      class="w-full rounded-lg border md:mt-0 sm:max-w-md xl:p-0 bg-white shadow-md border-gray-200"
-    >
+    
+    <div class="w-full rounded-lg border bg-white shadow-md border-gray-200 xl:p-0 md:max-w-4xl">
       <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-        <h1
-          class="text-xl font-bold leading-tight tracking-tight md:text-2xl text-gray-950"
-        >
-          Create an account
+        <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl text-gray-950 text-center mb-6">
+          Crear una cuenta
         </h1>
-        <button
-          class="px-4 py-2 border border-gray-500 rounded-md w-full text-gray-950 inline-flex gap-2 items-center justify-center hover:bg-gray-50 focus:ring-4 focus:ring-gray-100 focus:outline-none"
-        >
-          <svg
-            class="size-5"
-            xmlns="http://www.w3.org/2000/svg"
-            height="24"
-            viewBox="0 0 24 24"
-            width="24"
-          >
-            <path
-              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-              fill="#4285F4"
-            />
-            <path
-              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-              fill="#34A853"
-            />
-            <path
-              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-              fill="#FBBC05"
-            />
-            <path
-              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-              fill="#EA4335"
-            />
-            <path d="M1 1h22v22H1z" fill="none" />
-          </svg>
-          Sign up with Google
-        </button>
-        <div class="inline-flex items-center justify-center w-full">
-          <hr class="w-64 h-px border-0 bg-gray-400 my-4" />
-          <span
-            class="absolute px-3 font-medium -translate-x-1/2 left-1/2 text-gray-950 bg-white"
-            >or</span
-          >
-        </div>
-        <form class="space-y-4 md:space-y-6" action="#">
-          <div>
-            <label
-              for="email"
-              class="block mb-2 text-sm font-medium text-gray-950"
-              >Your email</label
-            >
-            <input
-              type="email"
-              name="email"
-              id="email"
-              class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 placeholder-gray-500 text-gray-950 focus:ring-blue-600 focus:border-blue-600"
-              placeholder="name@company.com"
-              required=""
-            />
+        
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Nombres -->
+            <div>
+              <label for="nombres" class="block mb-2 text-sm font-medium text-gray-950">Nombres <span class="text-red-500">*</span></label>
+              <input type="text" id="nombres" formControlName="nombres" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 placeholder-gray-500 text-gray-950 focus:ring-blue-600 focus:border-blue-600" placeholder="Ej. Juan Carlos" />
+              @if (apiErrors()?.nombres) { <p class="mt-1 text-sm text-red-600">{{ apiErrors().nombres[0] }}</p> }
+            </div>
+
+            <!-- Apellido Paterno -->
+            <div>
+              <label for="apellido_paterno" class="block mb-2 text-sm font-medium text-gray-950">Apellido Paterno <span class="text-red-500">*</span></label>
+              <input type="text" id="apellido_paterno" formControlName="apellido_paterno" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 placeholder-gray-500 text-gray-950 focus:ring-blue-600 focus:border-blue-600" />
+              @if (apiErrors()?.apellido_paterno) { <p class="mt-1 text-sm text-red-600">{{ apiErrors().apellido_paterno[0] }}</p> }
+            </div>
+
+            <!-- Apellido Materno -->
+            <div>
+              <label for="apellido_materno" class="block mb-2 text-sm font-medium text-gray-950">Apellido Materno</label>
+              <input type="text" id="apellido_materno" formControlName="apellido_materno" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 placeholder-gray-500 text-gray-950 focus:ring-blue-600 focus:border-blue-600" />
+              @if (apiErrors()?.apellido_materno) { <p class="mt-1 text-sm text-red-600">{{ apiErrors().apellido_materno[0] }}</p> }
+            </div>
           </div>
-          <div>
-            <label
-              for="password"
-              class="block mb-2 text-sm font-medium text-gray-950"
-              >Password</label
-            >
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="••••••••"
-              class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 placeholder-gray-500 text-gray-950 focus:ring-blue-600 focus:border-blue-600"
-              required=""
-            />
+
+          <hr class="border-gray-200">
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Tipo Documento -->
+            <div>
+              <label for="tipo_documento_identidad_id" class="block mb-2 text-sm font-medium text-gray-950">Tipo de Documento</label>
+              <select id="tipo_documento_identidad_id" formControlName="tipo_documento_identidad_id" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 text-gray-950 focus:ring-blue-600 focus:border-blue-600">
+                <option [ngValue]="null">Seleccione...</option>
+                @for (td of tiposDocumento(); track td.id) {
+                  <option [ngValue]="td.id">{{ td.siglas }} - {{ td.nombre }}</option>
+                }
+              </select>
+              @if (apiErrors()?.tipo_documento_identidad_id) { <p class="mt-1 text-sm text-red-600">{{ apiErrors().tipo_documento_identidad_id[0] }}</p> }
+            </div>
+
+            <!-- Numero Documento -->
+            <div>
+              <label for="numero_documento" class="block mb-2 text-sm font-medium text-gray-950">Número de Documento</label>
+              <input type="text" id="numero_documento" formControlName="numero_documento" [attr.maxlength]="documentMaxLength()" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 text-gray-950 focus:ring-blue-600 focus:border-blue-600 disabled:opacity-50 disabled:cursor-not-allowed" />
+              @if (apiErrors()?.numero_documento) { <p class="mt-1 text-sm text-red-600">{{ apiErrors().numero_documento[0] }}</p> }
+            </div>
+
+            <!-- Género -->
+            <div>
+              <label for="genero_id" class="block mb-2 text-sm font-medium text-gray-950">Género</label>
+              <select id="genero_id" formControlName="genero_id" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 text-gray-950 focus:ring-blue-600 focus:border-blue-600">
+                <option [ngValue]="null">Seleccione...</option>
+                @for (g of generos(); track g.id) {
+                  <option [ngValue]="g.id">{{ g.nombre }}</option>
+                }
+              </select>
+              @if (apiErrors()?.genero_id) { <p class="mt-1 text-sm text-red-600">{{ apiErrors().genero_id[0] }}</p> }
+            </div>
+
+            <!-- Fecha Nacimiento -->
+            <div>
+              <label for="fecha_nacimiento" class="block mb-2 text-sm font-medium text-gray-950">Fecha de Nacimiento</label>
+              <input type="date" id="fecha_nacimiento" formControlName="fecha_nacimiento" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 text-gray-950 focus:ring-blue-600 focus:border-blue-600" />
+              @if (apiErrors()?.fecha_nacimiento) { <p class="mt-1 text-sm text-red-600">{{ apiErrors().fecha_nacimiento[0] }}</p> }
+            </div>
+            
+            <!-- Celular -->
+            <div>
+              <label for="numero_celular" class="block mb-2 text-sm font-medium text-gray-950">Celular</label>
+              <input type="text" id="numero_celular" formControlName="numero_celular" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 text-gray-950 focus:ring-blue-600 focus:border-blue-600" />
+              @if (apiErrors()?.numero_celular) { <p class="mt-1 text-sm text-red-600">{{ apiErrors().numero_celular[0] }}</p> }
+            </div>
           </div>
-          <div>
-            <label
-              for="confirm-password"
-              class="block mb-2 text-sm font-medium text-gray-950"
-              >Confirm password</label
-            >
-            <input
-              type="confirm-password"
-              name="confirm-password"
-              id="confirm-password"
-              placeholder="••••••••"
-              class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 placeholder-gray-500 text-gray-950 focus:ring-blue-600 focus:border-blue-600"
-              required=""
-            />
+
+          <hr class="border-gray-200">
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Departamento -->
+            <div>
+              <label for="departamento_id" class="block mb-2 text-sm font-medium text-gray-950">Departamento</label>
+              <select id="departamento_id" formControlName="departamento_id" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 text-gray-950 focus:ring-blue-600 focus:border-blue-600">
+                <option [ngValue]="null">Seleccione...</option>
+                @for (d of departamentos(); track d.id) {
+                  <option [ngValue]="d.id">{{ d.descripcion }}</option>
+                }
+              </select>
+              @if (apiErrors()?.departamento_id) { <p class="mt-1 text-sm text-red-600">{{ apiErrors().departamento_id[0] }}</p> }
+            </div>
+
+            <!-- Provincia -->
+            <div>
+              <label for="provincia_id" class="block mb-2 text-sm font-medium text-gray-950">Provincia</label>
+              <select id="provincia_id" formControlName="provincia_id" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 text-gray-950 focus:ring-blue-600 focus:border-blue-600">
+                <option [ngValue]="null">Seleccione...</option>
+                @for (p of provinciasFiltradas(); track p.id) {
+                  <option [ngValue]="p.id">{{ p.descripcion }}</option>
+                }
+              </select>
+              @if (apiErrors()?.provincia_id) { <p class="mt-1 text-sm text-red-600">{{ apiErrors().provincia_id[0] }}</p> }
+            </div>
+
+            <!-- Distrito -->
+            <div>
+              <label for="distrito_id" class="block mb-2 text-sm font-medium text-gray-950">Distrito</label>
+              <select id="distrito_id" formControlName="distrito_id" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 text-gray-950 focus:ring-blue-600 focus:border-blue-600">
+                <option [ngValue]="null">Seleccione...</option>
+                @for (dist of distritosFiltrados(); track dist.id) {
+                  <option [ngValue]="dist.id">{{ dist.descripcion }}</option>
+                }
+              </select>
+              @if (apiErrors()?.distrito_id) { <p class="mt-1 text-sm text-red-600">{{ apiErrors().distrito_id[0] }}</p> }
+            </div>
           </div>
-          <div class="flex items-start">
+
+          <hr class="border-gray-200">
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Correo -->
+            <div>
+              <label for="correo" class="block mb-2 text-sm font-medium text-gray-950">Correo <span class="text-red-500">*</span></label>
+              <input type="email" id="correo" formControlName="correo" placeholder="ejemplo@empresa.com" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 text-gray-950 focus:ring-blue-600 focus:border-blue-600" />
+              @if (apiErrors()?.correo) { <p class="mt-1 text-sm text-red-600">{{ apiErrors().correo[0] }}</p> }
+            </div>
+
+            <!-- Password -->
+            <div>
+              <label for="password" class="block mb-2 text-sm font-medium text-gray-950">Contraseña <span class="text-red-500">*</span></label>
+              <input type="password" id="password" formControlName="password" placeholder="••••••••" class="border text-sm rounded-lg block w-full p-2.5 bg-gray-50 border-gray-400 text-gray-950 focus:ring-blue-600 focus:border-blue-600" />
+              @if (apiErrors()?.password) { <p class="mt-1 text-sm text-red-600">{{ apiErrors().password[0] }}</p> }
+            </div>
+          </div>
+
+          <div class="flex items-start mt-4">
             <div class="flex items-center h-5">
-              <input
-                id="terms"
-                aria-describedby="terms"
-                type="checkbox"
-                class="w-4 h-4 border rounded focus:ring-3 bg-gray-100 border-gray-400 focus:ring-primary-600 ring-offset-gray-50"
-                required=""
-              />
+              <input id="acepto_termino_condiciones" formControlName="acepto_termino_condiciones" type="checkbox" class="w-4 h-4 border rounded focus:ring-3 bg-gray-100 border-gray-400 focus:ring-primary-600" />
             </div>
             <div class="ml-3 text-sm">
-              <label for="terms" class="font-light text-gray-500"
-                >I accept the
-                <a class="font-medium hover:underline text-primary-600"
-                  >Terms and Conditions</a
-                ></label
-              >
+              <label for="acepto_termino_condiciones" class="font-light text-gray-500">
+                Acepto los <a class="font-medium hover:underline text-primary-600">Términos y Condiciones</a>
+              </label>
+              @if (signupForm.get('acepto_termino_condiciones')?.touched && signupForm.get('acepto_termino_condiciones')?.invalid) {
+                <p class="mt-1 text-sm text-red-600">Debe aceptar los términos.</p>
+              }
             </div>
           </div>
-          <button
-            type="submit"
-            class="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-400"
-          >
-            Create an account
+
+          <button type="submit" [disabled]="isSubmitting()" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-6">
+            {{ isSubmitting() ? 'Registrando...' : 'Crear cuenta' }}
           </button>
-          <p class="text-sm font-light text-gray-500">
-            Already have an account?
-            <a
-              routerLink="/login"
-              class="font-medium hover:underline text-primary-600"
-              >Login here</a
-            >
+          
+          <p class="text-sm font-light text-gray-500 mt-4 text-center">
+            ¿Ya tienes una cuenta? <a routerLink="/login" class="font-medium hover:underline text-primary-600">Inicia sesión</a>
           </p>
         </form>
       </div>

@@ -1,19 +1,27 @@
 export interface Product {
   id: number;
   usuario_id: number;
-  usuario_nombres: string | null;
-  usuario_apellido_paterno: string | null;
-  usuario_apellido_materno: string | null;
+  usuario_correo: string | null;
 
   categoria_id: number;
   categoria_nombre: string | null;
 
-  nombre: string;
-  descripcion: string;
-  precio: string;
-  cantidad: number;
+  marca_id: number;
+  marca_nombre: string | null;
 
-  codigo_barras: string;
+  nombre: string;
+  slug: string;
+  descripcion_corta: string | null;
+  descripcion_larga: string | null;
+  
+  precio_venta: string;
+  precio_oferta: string | null;
+  precio_compra_referencial: string | null;
+  
+  es_destacado: boolean;
+  stock_actual: number;
+
+  codigo_barras: string | null;
   codigo_qr: string | null;
 
   fecha_vencimiento: string | null;

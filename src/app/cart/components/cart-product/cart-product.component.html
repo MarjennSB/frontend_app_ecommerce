@@ -65,7 +65,7 @@
       <div class="text-end md:order-4 md:w-32">
         <p class="text-base font-bold text-gray-900">
           <!-- {{ product().price * quantity() | currency }} -->
-            {{ +product().precio * quantity() | currency }}
+            {{ $any(product().precio_oferta || product().precio_venta) * quantity() | currency }}
         </p>
       </div>
     </div>

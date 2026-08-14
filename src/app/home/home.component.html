@@ -20,6 +20,7 @@
             </a>
     </article>
 
+    @if (productsOffers.length) {
     <article
       id="controls-carousel"
       class="relative w-full max-w-screen-sm mx-auto"
@@ -29,8 +30,10 @@
       <div class="relative overflow-hidden rounded-lg h-96">
         @for (productOffer of productsOffers; track $index) {
         <div
-          class="mt-20 lg:mt-24 hidden duration-700 ease-in-out"
+          class="mt-20 lg:mt-24 duration-700 ease-in-out"
+          [class.hidden]="$index !== 0"
           data-carousel-item
+          [attr.data-carousel-item]="$index === 0 ? 'active' : ''"
         >
           <app-product-offer [product]="productOffer" />
         </div>
@@ -90,6 +93,7 @@
         </span>
       </button>
     </article>
+    }
   </section>
 
 

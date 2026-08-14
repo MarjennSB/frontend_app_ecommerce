@@ -79,189 +79,32 @@
             role="tabpanel"
             aria-labelledby="category-tab"
           >
+            @for (group of groupedCategories(); track group.letter) {
             <div class="space-y-2">
-              <h5 class="text-lg font-medium uppercase text-black">C</h5>
+              <h5 class="text-lg font-medium uppercase text-black">{{ group.letter }}</h5>
 
+              @for (item of group.items; track item.id) {
               <div class="flex items-center">
                 <input
-                  id="consoles"
+                  [id]="'category-' + item.id"
                   type="radio"
-                  value="consoles"
+                  [value]="item.id.toString()"
                   name="category"
-                  [checked]="category() === 'consoles'"
-                  (change)="updateCategory('consoles')"
+                  [checked]="category() === item.id.toString()"
+                  (change)="updateCategory(item.id.toString())"
                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
                 />
 
                 <label
-                  for="consoles"
+                  [for]="'category-' + item.id"
                   class="ml-2 text-sm font-medium text-gray-900"
                 >
-                  Consoles
+                  {{ item.nombre }}
                 </label>
               </div>
-              <div class="flex items-center">
-                <input
-                  id="clothes"
-                  type="radio"
-                  value="clothes"
-                  name="category"
-                  [checked]="category() === 'clothes'"
-                  (change)="updateCategory('clothes')"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-                />
-
-                <label
-                  for="clothes"
-                  class="ml-2 text-sm font-medium text-gray-900"
-                  >Clothes
-                </label>
-              </div>
+              }
             </div>
-            <div class="space-y-2">
-              <h5 class="text-lg font-medium uppercase text-black">G</h5>
-
-              <div class="flex items-center">
-                <input
-                  id="gift-cards"
-                  type="radio"
-                  value="gift-cards"
-                  name="category"
-                  [checked]="category() === 'gift-cards'"
-                  (change)="updateCategory('gift-cards')"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-                />
-
-                <label
-                  for="gift-cards"
-                  class="ml-2 text-sm font-medium text-gray-900"
-                >
-                  Gift Cards
-                </label>
-              </div>
-            </div>
-            <div class="space-y-2">
-              <h5 class="text-lg font-medium uppercase text-black">H</h5>
-
-              <div class="flex items-center">
-                <input
-                  id="consoles"
-                  type="radio"
-                  value="consoles"
-                  name="category"
-                  [checked]="category() === 'headphones'"
-                  (change)="updateCategory('headphones')"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-                />
-
-                <label
-                  for="headphones"
-                  class="ml-2 text-sm font-medium text-gray-900"
-                >
-                  Headphones
-                </label>
-              </div>
-            </div>
-            <div class="space-y-2">
-              <h5 class="text-lg font-medium uppercase text-black">L</h5>
-
-              <div class="flex items-center">
-                <input
-                  id="laptops"
-                  type="radio"
-                  value="laptops"
-                  name="category"
-                  [checked]="category() === 'laptops'"
-                  (change)="updateCategory('laptops')"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-                />
-
-                <label
-                  for="laptops"
-                  class="ml-2 text-sm font-medium text-gray-900"
-                >
-                  Laptops
-                </label>
-              </div>
-            </div>
-            <div class="space-y-2">
-              <h5 class="text-lg font-medium uppercase text-black">P</h5>
-
-              <div class="flex items-center">
-                <input
-                  id="phones"
-                  type="radio"
-                  value="phones"
-                  name="category"
-                  [checked]="category() === 'phones'"
-                  (change)="updateCategory('phones')"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-                />
-
-                <label
-                  for="phones"
-                  class="ml-2 text-sm font-medium text-gray-900"
-                >
-                  Phones
-                </label>
-              </div>
-              <div class="flex items-center">
-                <input
-                  id="PCs"
-                  type="radio"
-                  value="PCs"
-                  name="category"
-                  [checked]="category() === 'PCs'"
-                  (change)="updateCategory('PCs')"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-                />
-
-                <label for="pc" class="ml-2 text-sm font-medium text-gray-900">
-                  PCs
-                </label>
-              </div>
-            </div>
-            <div class="space-y-2">
-              <h5 class="text-lg font-medium uppercase text-black">T</h5>
-
-              <div class="flex items-center">
-                <input
-                  id="tvs"
-                  type="radio"
-                  value="tvs"
-                  name="category"
-                  [checked]="category() === 'tvs'"
-                  (change)="updateCategory('tvs')"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-                />
-
-                <label for="tvs" class="ml-2 text-sm font-medium text-gray-900">
-                  TVs
-                </label>
-              </div>
-            </div>
-            <div class="space-y-2">
-              <h5 class="text-lg font-medium uppercase text-black">W</h5>
-
-              <div class="flex items-center">
-                <input
-                  id="watches"
-                  type="radio"
-                  value="watches"
-                  name="category"
-                  [checked]="category() === 'watches'"
-                  (change)="updateCategory('watches')"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-                />
-
-                <label
-                  for="watches"
-                  class="ml-2 text-sm font-medium text-gray-900"
-                >
-                  Watches
-                </label>
-              </div>
-            </div>
+            }
           </div>
         </div>
 

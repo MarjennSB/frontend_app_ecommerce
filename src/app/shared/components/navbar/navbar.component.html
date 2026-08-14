@@ -20,6 +20,7 @@
     <div
       class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse"
     >
+      @if (!authService.isAuthenticated()) {
       <a
         aria-label="Go to Login"
         routerLink="/login"
@@ -32,6 +33,15 @@
         class="text-white focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-300"
         >Sign up</a
       >
+      } @else {
+      <button
+        type="button"
+        (click)="authService.logout()"
+        class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 text-center"
+      >
+        Logout
+      </button>
+      }
       <button
         data-collapse-toggle="mega-menu-icons"
         type="button"

@@ -18,8 +18,7 @@ class IncreasingPriceSortStrategy implements SortStrategy {
   type: string = 'increasing-price';
 
   sort(arr: Product[]): Product[] {
-    /* return arr.sort((a, b) => a.price - b.price); */
-    return arr.sort((a, b) => Number(a.precio) - Number(b.precio));
+    return arr.sort((a, b) => Number(a.precio_venta) - Number(b.precio_venta));
   }
 }
 
@@ -27,8 +26,7 @@ class DecreasingPriceSortStrategy implements SortStrategy {
   type: string = 'decreasing-price';
 
   sort(arr: Product[]): Product[] {
-    /* return arr.sort((a, b) => b.price - a.price); */
-    return arr.sort((a, b) => Number(b.precio) - Number(a.precio));
+    return arr.sort((a, b) => Number(b.precio_venta) - Number(a.precio_venta));
   }
 }
 

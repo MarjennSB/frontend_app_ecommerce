@@ -1,0 +1,42 @@
+<app-products-layout>
+  <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2">
+    <div class="flex items-center space-x-4 mb-4">
+      <img
+        class="w-16 h-16 rounded-full"
+        src="https://ui-avatars.com/api/?name={{ authService.currentUser()?.nombres || 'U' }}&background=0D8ABC&color=fff&size=64"
+        alt="user photo"
+      />
+      <div>
+        <h3 class="text-xl font-bold text-gray-900">
+          {{ authService.currentUser()?.nombres }} {{ authService.currentUser()?.apellido_paterno }}
+        </h3>
+        <span class="text-base font-normal text-gray-500">
+          {{ authService.currentUser()?.correo }}
+        </span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 mt-6">
+      <div>
+        <h4 class="text-sm font-semibold text-gray-900">Nombres</h4>
+        <p class="text-gray-700">{{ authService.currentUser()?.nombres }}</p>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-gray-900">Apellidos</h4>
+        <p class="text-gray-700">{{ authService.currentUser()?.apellido_paterno }} {{ authService.currentUser()?.apellido_materno }}</p>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-gray-900">Correo Electrónico</h4>
+        <p class="text-gray-700">{{ authService.currentUser()?.correo }}</p>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-gray-900">Teléfono</h4>
+        <p class="text-gray-700">{{ authService.currentUser()?.numero_celular || 'No registrado' }}</p>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-gray-900">Fecha de Nacimiento</h4>
+        <p class="text-gray-700">{{ authService.currentUser()?.fecha_nacimiento || 'No registrada' }}</p>
+      </div>
+    </div>
+  </div>
+</app-products-layout>

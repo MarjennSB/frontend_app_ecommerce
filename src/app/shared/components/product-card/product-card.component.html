@@ -22,7 +22,7 @@
       <div class="flex items-center justify-end gap-1">
         <a
           role="button"
-          [routerLink]="['/products', product().id]"
+          [routerLink]="['/products', product().slug]"
           [attr.data-tooltip-target]="productTooltipId"
           class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
         >
@@ -137,7 +137,7 @@
     <div class="mt-4 flex items-center justify-between gap-4">
       <p class="text-2xl font-extrabold leading-tight text-gray-900">
         <!-- {{ product().price | currency }} -->
-          {{ product().precio | currency }}
+          {{ product().precio_oferta || product().precio_venta | currency }}
       </p>
 
       <button

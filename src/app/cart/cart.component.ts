@@ -54,7 +54,7 @@ export class CartComponent implements OnInit {
     this.cart = JSON.parse(localStorage.getItem('cart') as string) || [];
 
     const originalPrice = this.cart.reduce(
-      (acc, { product, quantity }) => acc + Number(product.precio) * quantity,
+      (acc, { product, quantity }) => acc + Number(product.precio_oferta || product.precio_venta) * quantity,
       0
     );
 
